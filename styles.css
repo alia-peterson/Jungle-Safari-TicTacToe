@@ -1,0 +1,83 @@
+* {
+  /* border: solid black 1px; */
+}
+
+body, html {
+  background-color: #A5D6A7;
+  height: 95%;
+  font-family: 'Barlow', sans-serif;
+  /* background-image: url(https://wallpaperaccess.com/full/126015.jpg); */
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 5px;
+}
+
+header {
+  text-align: center;
+}
+
+h4 {
+  font-size: 36px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 90%;
+  justify-content: center;
+}
+
+.container--game {
+  background-color: white;
+  flex-direction: column;
+  height: 95%;
+  justify-content: center;
+  width: 50%;
+}
+
+.container--game-board {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #4CAF50;
+  justify-content: center;
+  margin: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 400px;
+}
+
+.container--game-board-square {
+  border: 1px solid #4CAF50;
+  height: 7em;
+  margin: 2px;
+  width: 7em;
+}
+
+.container--game-board-square:nth-child(-n+3) {
+  border-top: none;
+}
+
+.container--game-board-square:nth-child(3n) {
+  border-right: none;
+}
+
+.container--game-board-square:nth-child(n+7) {
+  border-bottom: none;
+}
+
+.container--game-board-square:nth-child(-3n+7) {
+  border-left: none;
+}
+
+.container--player {
+  flex-direction: column;
+  height: 95%;
+  overflow: scroll;
+  width: 25%;
+}
