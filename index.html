@@ -6,31 +6,36 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <h1>🌿 Jungle Safari Tic-Tac-Toe 🌿</h1>
+    <header>
+      <h1>🌿 Jungle Safari Tic-Tac-Toe 🌿</h1>
+      <h2>Created by: Alia Peterson</h2>
+    </header>
     <section class="container">
       <section class="container container--player">
-        <h2>Player 1</h2>
+        <h3>Player 1</h3>
+        <h4>🦎</h4>
         <h3>Number of Wins</h3>
-        <p>0</p>
+        <h4 class="container--player-score">0</h4>
       </section>
       <section class="container container--game">
-        <h2>Winner!</h2>
+        <h3>Winner!</h3>
         <div class="container--game-board">
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
-          <div class="container--game-board-square"></div>
+          <div id="A1" class="container--game-board-square"></div>
+          <div id="B1" class="container--game-board-square"></div>
+          <div id="C1" class="container--game-board-square"></div>
+          <div id="A2" class="container--game-board-square"></div>
+          <div id="B2" class="container--game-board-square"></div>
+          <div id="C2" class="container--game-board-square"></div>
+          <div id="A3" class="container--game-board-square"></div>
+          <div id="B3" class="container--game-board-square"></div>
+          <div id="C3" class="container--game-board-square"></div>
         </div>
       </section>
       <section class="container container--player">
-        <h2>Player 2</h2>
+        <h3>Player 2</h3>
+        <h4>🐒</h4>
         <h3>Number of Wins</h3>
-        <p>0</p>
+        <h4 class="container--player-score">0</h4>
       </section>
     </section>
     <script src="./src/player.js"></script>
