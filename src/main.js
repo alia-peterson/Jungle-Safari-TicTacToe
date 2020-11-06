@@ -29,7 +29,6 @@ function createNewGame() {
 
 function assignSquareInnerText() {
   if (event.target.innerText === '') {
-    debugger
     event.target.innerText = currentGame.playerToken
 
     saveSquareToArray()
@@ -61,12 +60,11 @@ function saveSquareToArray() {
 function resetBoard() {
   if (winnerBanner.innerText.includes('Wins') || winnerBanner.innerText.includes('Tie') ) {
     setTimeout(function() {
+      winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
       for (var i = 0; i < gameBoardSquares.length; i++) {
         gameBoardSquares[i].innerText = ''
       }
     }, 800)
     currentGame.resetGame()
-    // currentGame.determineWhichPlayer()
-    // winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
   }
 }
