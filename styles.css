@@ -3,10 +3,15 @@
 }
 
 body, html {
-  background-color: #A5D6A7;
+  background-attachment: fixed;
+  background-image: url(https://i.pinimg.com/originals/b8/4e/e0/b84ee09c72fa8e77be081385deb4ab41.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 95%;
   font-family: 'Barlow', sans-serif;
-  /* background-image: url(https://wallpaperaccess.com/full/126015.jpg); */
+  margin: 0;
+  width: 100%;
 }
 
 h1 {
@@ -32,15 +37,15 @@ h4 {
   justify-content: center;
 }
 
-.container--game {
-  background-color: white;
+.game {
+  background-color: #B5DBBA;
   flex-direction: column;
   height: 95%;
   justify-content: center;
   width: 50%;
 }
 
-.container--game-board {
+.game--board {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -52,32 +57,44 @@ h4 {
   width: 400px;
 }
 
-.container--game-board-square {
+.game--square {
+  align-items: center;
   border: 1px solid #4CAF50;
-  height: 7em;
+  display: inherit;
+  font-size: 54px;
+  height: 2em;
+  justify-content: center;
   margin: 2px;
-  width: 7em;
+  text-align: center;
+  width: 2em;
 }
 
-.container--game-board-square:nth-child(-n+3) {
+.game--square:hover {
+  cursor: pointer;
+}
+
+.game--square:nth-child(-n+3) {
   border-top: none;
 }
 
-.container--game-board-square:nth-child(3n) {
+.game--square:nth-child(3n) {
   border-right: none;
 }
 
-.container--game-board-square:nth-child(n+7) {
+.game--square:nth-child(n+7) {
   border-bottom: none;
 }
 
-.container--game-board-square:nth-child(-3n+7) {
+.game--square:nth-child(-3n+7) {
   border-left: none;
 }
 
-.container--player {
+.player {
+  background-color: #B5DBBA;
+  backdrop-filter: blur(4px);
   flex-direction: column;
   height: 95%;
   overflow: scroll;
+  opacity: 0.8;
   width: 25%;
 }
