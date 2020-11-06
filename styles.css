@@ -37,7 +37,7 @@ h4 {
   justify-content: center;
 }
 
-.container--game {
+.game {
   background-color: #B5DBBA;
   flex-direction: column;
   height: 95%;
@@ -45,7 +45,7 @@ h4 {
   width: 50%;
 }
 
-.container--game-board {
+.game--board {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +57,7 @@ h4 {
   width: 400px;
 }
 
-.container--game-board-square {
+.game--square {
   align-items: center;
   border: 1px solid #4CAF50;
   display: inherit;
@@ -69,28 +69,29 @@ h4 {
   width: 2em;
 }
 
-.container--game-board-square:hover {
+.game--square:hover {
   cursor: pointer;
 }
 
-.container--game-board-square:nth-child(-n+3) {
+.game--square:nth-child(-n+3) {
   border-top: none;
 }
 
-.container--game-board-square:nth-child(3n) {
+.game--square:nth-child(3n) {
   border-right: none;
 }
 
-.container--game-board-square:nth-child(n+7) {
+.game--square:nth-child(n+7) {
   border-bottom: none;
 }
 
-.container--game-board-square:nth-child(-3n+7) {
+.game--square:nth-child(-3n+7) {
   border-left: none;
 }
 
-.container--player {
+.player {
   background-color: #B5DBBA;
+  backdrop-filter: blur(4px);
   flex-direction: column;
   height: 95%;
   overflow: scroll;

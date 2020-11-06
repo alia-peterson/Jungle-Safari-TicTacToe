@@ -21,8 +21,7 @@ class Game {
   }
 
   determineWinner() {
-    // 8 different win conditions
-    // else return 'it\'s a tie'
+    // console.log(this.board);
     if (this.board[0][0] === this.board[0][1] && this.board[0][1] === this.board[0][2]) {
       return `${this.playerToken} Wins!`
     } else if (this.board[1][0] === this.board[1][1] && this.board[1][1] === this.board[1][2]) {
@@ -39,8 +38,8 @@ class Game {
       return `${this.playerToken} Wins!`
     } else if (this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) {
       return `${this.playerToken} Wins!`
-    // } else {
-    //   return `${this.playerToken}'s Turn!`
+    } else if (this.turn >= 9) {
+      return `It's a Tie!`
     }
   }
 
@@ -50,7 +49,7 @@ class Game {
       ['A2', 'B2', 'C2'],
       ['A3', 'B3', 'C3']
     ]
-    this.turn = 0
+    this.turn = 1
   }
 }
 

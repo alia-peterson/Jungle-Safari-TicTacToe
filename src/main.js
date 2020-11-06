@@ -1,8 +1,8 @@
 // query selectors
 
 var currentGame
-var gameBoard = document.querySelector('.container--game-board')
-var gameBoardSquares = document.querySelectorAll('.container--game-board-square')
+var gameBoard = document.querySelector('.game--board')
+var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('#banner-winner')
 var playerOneEmoji = document.querySelector('#player-one-emoji')
 var playerTwoEmoji = document.querySelector('#player-two-emoji')
@@ -12,8 +12,8 @@ var playerTwoEmoji = document.querySelector('#player-two-emoji')
 window.addEventListener('load', createNewGame)
 
 gameBoard.addEventListener('click', function(event) {
-  if (event.target.className === 'container--game-board-square') {
-    asignSquareInnerText()
+  if (event.target.className === 'game--square') {
+    assignSquareInnerText()
   }
 })
 
@@ -27,34 +27,46 @@ function createNewGame() {
   currentGame.determineWhichPlayer()
 }
 
-function asignSquareInnerText() {
+function assignSquareInnerText() {
   if (event.target.innerText === '') {
+    debugger
     event.target.innerText = currentGame.playerToken
+
     saveSquareToArray()
-    winnerBanner.innerText = currentGame.determineWinner()
+    setBannerText()
+  }
+  resetBoard()
+}
+
+function setBannerText() {
+  // console.log(currentGame.turn);
+  if (currentGame.determineWinner() === undefined) {
     currentGame.determineWhichPlayer()
-    resetBoard()
+    winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
+  } else {
+    winnerBanner.innerText = currentGame.determineWinner()
   }
 }
 
 function saveSquareToArray() {
   for (var i = 0; i < 3; i++) {
-    // console.log(currentGame.board[i])
     for (var j = 0; j < 3; j++) {
       if (event.target.id === currentGame.board[i][j]) {
         currentGame.board[i][j] = event.target.innerText
-        // console.log(currentGame.board[i])
       }
     }
   }
 }
 
 function resetBoard() {
-  if (winnerBanner.innerText.includes('Wins') || currentGame.turn >= 10) {
-    for (var i = 0; i < gameBoardSquares.length; i++) {
-      gameBoardSquares[i].innerText = ''
-    }
+  if (winnerBanner.innerText.includes('Wins') || winnerBanner.innerText.includes('Tie') ) {
+    setTimeout(function() {
+      for (var i = 0; i < gameBoardSquares.length; i++) {
+        gameBoardSquares[i].innerText = ''
+      }
+    }, 800)
     currentGame.resetGame()
-    currentGame.determineWhichPlayer()
+    // currentGame.determineWhichPlayer()
+    // winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
   }
 }
