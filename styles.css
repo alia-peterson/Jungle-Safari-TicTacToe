@@ -3,10 +3,15 @@
 }
 
 body, html {
-  background-color: #A5D6A7;
+  background-attachment: fixed;
+  background-image: url(https://i.pinimg.com/originals/b8/4e/e0/b84ee09c72fa8e77be081385deb4ab41.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 95%;
   font-family: 'Barlow', sans-serif;
-  /* background-image: url(https://wallpaperaccess.com/full/126015.jpg); */
+  margin: 0;
+  width: 100%;
 }
 
 h1 {
@@ -33,7 +38,7 @@ h4 {
 }
 
 .container--game {
-  background-color: white;
+  background-color: #B5DBBA;
   flex-direction: column;
   height: 95%;
   justify-content: center;
@@ -76,8 +81,10 @@ h4 {
 }
 
 .container--player {
+  background-color: #B5DBBA;
   flex-direction: column;
   height: 95%;
   overflow: scroll;
+  opacity: 0.7;
   width: 25%;
 }
