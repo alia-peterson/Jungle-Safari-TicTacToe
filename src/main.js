@@ -30,11 +30,11 @@ function createNewGame() {
 function asignSquareInnerText() {
   if (event.target.innerText === '') {
     event.target.innerText = currentGame.playerToken
+    saveSquareToArray()
+    winnerBanner.innerText = currentGame.determineWinner()
     currentGame.determineWhichPlayer()
+    resetBoard()
   }
-  saveSquareToArray()
-  winnerBanner.innerText = currentGame.determineWinner()
-  resetBoard()
 }
 
 function saveSquareToArray() {

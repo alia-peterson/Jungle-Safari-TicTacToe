@@ -24,23 +24,23 @@ class Game {
     // 8 different win conditions
     // else return 'it\'s a tie'
     if (this.board[0][0] === this.board[0][1] && this.board[0][1] === this.board[0][2]) {
-      return `${this.board[0][0]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[1][0] === this.board[1][1] && this.board[1][1] === this.board[1][2]) {
-      return `${this.board[1][0]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[2][0] === this.board[2][1] && this.board[2][1] === this.board[2][2]) {
-      return `${this.board[2][0]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[0][0] === this.board[1][0] && this.board[1][0] === this.board[2][0]) {
-      return `${this.board[0][0]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[0][1] === this.board[1][1] && this.board[1][1] === this.board[2][1]) {
-      return `${this.board[0][1]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[0][2] === this.board[1][2] && this.board[1][2] === this.board[2][2]) {
-      return `${this.board[0][2]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) {
-      return `${this.board[0][0]} Wins!`
+      return `${this.playerToken} Wins!`
     } else if (this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) {
-      return `${this.board[0][2]} Wins!`
-    } else {
-      return `${this.playerToken}'s Turn!'`
+      return `${this.playerToken} Wins!`
+    // } else {
+    //   return `${this.playerToken}'s Turn!`
     }
   }
 
