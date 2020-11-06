@@ -58,10 +58,19 @@ h4 {
 }
 
 .container--game-board-square {
+  align-items: center;
   border: 1px solid #4CAF50;
-  height: 7em;
+  display: inherit;
+  font-size: 54px;
+  height: 2em;
+  justify-content: center;
   margin: 2px;
-  width: 7em;
+  text-align: center;
+  width: 2em;
+}
+
+.container--game-board-square:hover {
+  cursor: pointer;
 }
 
 .container--game-board-square:nth-child(-n+3) {
