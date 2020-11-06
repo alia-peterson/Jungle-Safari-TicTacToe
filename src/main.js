@@ -24,7 +24,7 @@ function createNewGame() {
   var player2 = new Player('two', '🐒')
 
   currentGame = new Game(player1, player2)
-  currentGame.determineWhichPlayer()
+  currentGame.determinePlayer()
 }
 
 function assignSquareInnerText() {
@@ -40,7 +40,7 @@ function assignSquareInnerText() {
 function setBannerText() {
   // console.log(currentGame.turn);
   if (currentGame.determineWinner() === undefined) {
-    currentGame.determineWhichPlayer()
+    currentGame.determinePlayer()
     winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
   } else {
     winnerBanner.innerText = currentGame.determineWinner()

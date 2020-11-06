@@ -4,6 +4,7 @@ class Game {
     this.player2 = player2
     this.playerToken = ''
     this.turn = 0
+    this.randomNumber = generateNumber()
     this.board = [
       ['A1', 'B1', 'C1'],
       ['A2', 'B2', 'C2'],
@@ -11,13 +12,14 @@ class Game {
     ]
   }
 
-  determineWhichPlayer() {
-    if (this.turn % 2 === 0) {
+  determinePlayer() {
+    if (this.randomNumber % 2 === 0) {
       this.playerToken = this.player1.token
     } else {
       this.playerToken = this.player2.token
     }
     this.turn += 1
+    this.randomNumber += 1
   }
 
   determineWinner() {
@@ -51,6 +53,10 @@ class Game {
     ]
     this.turn = 1
   }
+}
+
+function generateNumber() {
+  return Math.floor(Math.random())
 }
 
 /*
