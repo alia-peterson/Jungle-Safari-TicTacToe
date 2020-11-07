@@ -100,4 +100,5 @@ function updateScoreCounters() {
 function deleteStoredGames() {
   localStorage.removeItem('saved-wins-player-one')
   localStorage.removeItem('saved-wins-player-two')
+  createNewGame()
 }
