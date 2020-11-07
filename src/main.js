@@ -6,10 +6,14 @@ var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('#banner-winner')
 var playerOneEmoji = document.querySelector('#player-one-emoji')
 var playerTwoEmoji = document.querySelector('#player-two-emoji')
+var playerOneWins = document.querySelector('#player-one-wins')
+var playerTwoWins = document.querySelector('#player-two-wins')
+var clearStorageButton = document.querySelector('button')
 
 // event handlers
 
 window.addEventListener('load', createNewGame)
+clearStorageButton.addEventListener('click', deleteStoredGames)
 
 gameBoard.addEventListener('click', function(event) {
   if (event.target.className === 'game--square') {
@@ -24,7 +28,10 @@ function createNewGame() {
   var player2 = new Player('two', '🐒')
 
   currentGame = new Game(player1, player2)
-  currentGame.determineWhichPlayer()
+  currentGame.determinePlayer()
+  setBannerText()
+  updateScoreFromMemory(playerOneWins, player1)
+  updateScoreFromMemory(playerTwoWins, player2)
 }
 
 function assignSquareInnerText() {
@@ -38,12 +45,12 @@ function assignSquareInnerText() {
 }
 
 function setBannerText() {
-  // console.log(currentGame.turn);
-  if (currentGame.determineWinner() === undefined) {
-    currentGame.determineWhichPlayer()
+  var winner = currentGame.determineWinner()
+  if (winner === undefined) {
+    currentGame.determinePlayer()
     winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
   } else {
-    winnerBanner.innerText = currentGame.determineWinner()
+    winnerBanner.innerText = winner
   }
 }
 
@@ -65,6 +72,32 @@ function resetBoard() {
         gameBoardSquares[i].innerText = ''
       }
     }, 800)
+    updateScoreCounters()
     currentGame.resetGame()
+    currentGame.determinePlayer()
   }
+}
+
+function updateScoreFromMemory(playerVariable, player) {
+  // console.log(currentGame.player1.retrieveWinsFromStorage());
+  var retreivedWins = player.retrieveWinsFromStorage()
+  if (retreivedWins) {
+    playerVariable.innerText = retreivedWins.length
+  } else {
+    playerVariable.innerText = 0
+  }
+}
+
+function updateScoreCounters() {
+  var newScore = currentGame.currentPlayer.wins.length
+  if (currentGame.currentPlayer.id === 'one') {
+    playerOneWins.innerText = newScore
+  } else if (currentGame.currentPlayer.id === 'two') {
+    playerTwoWins.innerText = newScore
+  }
+}
+
+function deleteStoredGames() {
+  localStorage.removeItem('saved-wins-player-one')
+  localStorage.removeItem('saved-wins-player-two')
 }
