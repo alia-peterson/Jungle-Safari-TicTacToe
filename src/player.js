@@ -12,10 +12,7 @@ class Player {
 
   retrieveWinsFromStorage() {
     var parsedWins = JSON.parse(localStorage.getItem('saved-wins'))
+    return parsedWins
     // set win counter based off parsed value
   }
 }
-
-
-// var player1 = new Player('one', '🦎')
-// var player2 = new Player('two', '🐒')

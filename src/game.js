@@ -2,6 +2,7 @@ class Game {
   constructor(player1, player2) {
     this.player1 = player1
     this.player2 = player2
+    this.currentPlayer = ''
     this.playerToken = ''
     this.turn = 0
     this.randomNumber = generateNumber()
@@ -14,8 +15,10 @@ class Game {
 
   determinePlayer() {
     if (this.randomNumber % 2 === 0) {
+      this.currentPlayer = this.player1
       this.playerToken = this.player1.token
     } else {
+      this.currentPlayer = this.player2
       this.playerToken = this.player2.token
     }
     this.turn += 1
@@ -23,26 +26,31 @@ class Game {
   }
 
   determineWinner() {
-    // console.log(this.board);
     if (this.board[0][0] === this.board[0][1] && this.board[0][1] === this.board[0][2]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[1][0] === this.board[1][1] && this.board[1][1] === this.board[1][2]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[2][0] === this.board[2][1] && this.board[2][1] === this.board[2][2]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[0][0] === this.board[1][0] && this.board[1][0] === this.board[2][0]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[0][1] === this.board[1][1] && this.board[1][1] === this.board[2][1]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[0][2] === this.board[1][2] && this.board[1][2] === this.board[2][2]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) {
-      return `${this.playerToken} Wins!`
+      this.returnPlayer()
     } else if (this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) {
-      return `${this.playerToken} Wins!`
-    } else if (this.turn >= 9) {
+      this.returnPlayer()
+    } else if (this.turn >= 10) {
       return `It's a Tie!`
     }
+  }
+
+  returnPlayer() {
+    this.currentPlayer.wins.push(this.board)
+    console.log(this.currentPlayer.wins);
+    return `${this.playerToken} Wins!`
   }
 
   resetGame() {
@@ -52,11 +60,12 @@ class Game {
       ['A3', 'B3', 'C3']
     ]
     this.turn = 1
+    this.randomNumber = generateNumber()
   }
 }
 
 function generateNumber() {
-  return Math.floor(Math.random())
+  return Math.floor(Math.random() * 100)
 }
 
 /*
