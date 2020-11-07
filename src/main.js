@@ -6,8 +6,8 @@ var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('#banner-winner')
 var playerOneEmoji = document.querySelector('#player-one-emoji')
 var playerTwoEmoji = document.querySelector('#player-two-emoji')
-var playerOneWins = document.querySelector('#player-one-score')
-var playerTwoWins = document.querySelector('#player-two-score')
+var playerOneWins = document.querySelector('#player-one-wins')
+var playerTwoWins = document.querySelector('#player-two-wins')
 
 // event handlers
 
@@ -43,11 +43,12 @@ function assignSquareInnerText() {
 }
 
 function setBannerText() {
-  if (currentGame.determineWinner() === undefined) {
+  var winner = currentGame.determineWinner()
+  if (winner === undefined) {
     currentGame.determinePlayer()
     winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
   } else {
-    winnerBanner.innerText = currentGame.determineWinner()
+    winnerBanner.innerText = winner
   }
 }
 
@@ -76,7 +77,7 @@ function resetBoard() {
 }
 
 function updateScoreFromMemory(playerVariable, playerNumber) {
-  console.log(currentGame.player1.retrieveWinsFromStorage());
+  // console.log(currentGame.player1.retrieveWinsFromStorage());
   if (currentGame.player1.retrieveWinsFromStorage()) {
 
   }

@@ -27,21 +27,21 @@ class Game {
 
   determineWinner() {
     if (this.board[0][0] === this.board[0][1] && this.board[0][1] === this.board[0][2]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[1][0] === this.board[1][1] && this.board[1][1] === this.board[1][2]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[2][0] === this.board[2][1] && this.board[2][1] === this.board[2][2]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[0][0] === this.board[1][0] && this.board[1][0] === this.board[2][0]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[0][1] === this.board[1][1] && this.board[1][1] === this.board[2][1]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[0][2] === this.board[1][2] && this.board[1][2] === this.board[2][2]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) {
-      this.returnPlayer()
+      return this.returnPlayer()
     } else if (this.turn >= 10) {
       return `It's a Tie!`
     }
@@ -49,7 +49,6 @@ class Game {
 
   returnPlayer() {
     this.currentPlayer.wins.push(this.board)
-    console.log(this.currentPlayer.wins);
     return `${this.playerToken} Wins!`
   }
 
