@@ -8,10 +8,12 @@ var playerOneEmoji = document.querySelector('#player-one-emoji')
 var playerTwoEmoji = document.querySelector('#player-two-emoji')
 var playerOneWins = document.querySelector('#player-one-wins')
 var playerTwoWins = document.querySelector('#player-two-wins')
+var clearStorageButton = document.querySelector('button')
 
 // event handlers
 
 window.addEventListener('load', createNewGame)
+clearStorageButton.addEventListener('click', deleteStoredGames)
 
 gameBoard.addEventListener('click', function(event) {
   if (event.target.className === 'game--square') {
@@ -28,8 +30,8 @@ function createNewGame() {
   currentGame = new Game(player1, player2)
   currentGame.determinePlayer()
   setBannerText()
-  // updateScoreFromMemory(playerOneWins, player1)
-  // updateScoreFromMemory(playerTwoWins, player2)
+  updateScoreFromMemory(playerOneWins, player1)
+  updateScoreFromMemory(playerTwoWins, player2)
 }
 
 function assignSquareInnerText() {
@@ -76,12 +78,14 @@ function resetBoard() {
   }
 }
 
-function updateScoreFromMemory(playerVariable, playerNumber) {
+function updateScoreFromMemory(playerVariable, player) {
   // console.log(currentGame.player1.retrieveWinsFromStorage());
-  if (currentGame.player1.retrieveWinsFromStorage()) {
-
+  var retreivedWins = player.retrieveWinsFromStorage()
+  if (retreivedWins) {
+    playerVariable.innerText = retreivedWins.length
+  } else {
+    playerVariable.innerText = 0
   }
-  // playerVariable.innerText = playerNumber.retrieveWinsFromStorage().length
 }
 
 function updateScoreCounters() {
@@ -91,4 +95,9 @@ function updateScoreCounters() {
   } else if (currentGame.currentPlayer.id === 'two') {
     playerTwoWins.innerText = newScore
   }
+}
+
+function deleteStoredGames() {
+  localStorage.removeItem('saved-wins-player-one')
+  localStorage.removeItem('saved-wins-player-two')
 }

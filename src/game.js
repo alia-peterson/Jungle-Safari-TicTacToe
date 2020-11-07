@@ -49,6 +49,7 @@ class Game {
 
   returnPlayer() {
     this.currentPlayer.wins.push(this.board)
+    this.currentPlayer.saveWinsToStorage()
     return `${this.playerToken} Wins!`
   }
 
