@@ -8,12 +8,18 @@ var playerOneEmoji = document.querySelector('#player-one-emoji')
 var playerTwoEmoji = document.querySelector('#player-two-emoji')
 var playerOneWins = document.querySelector('#player-one-wins')
 var playerTwoWins = document.querySelector('#player-two-wins')
-var clearStorageButton = document.querySelector('button')
+var clearStorageButton = document.querySelector('#button--clear-memory')
+var resetBoardButton = document.querySelector('#button--reset-board')
 
 // event handlers
 
 window.addEventListener('load', createNewGame)
 clearStorageButton.addEventListener('click', deleteStoredGames)
+
+resetBoardButton.addEventListener('click', function() {
+  clearBoardSquares()
+  currentGame.resetGame()
+})
 
 gameBoard.addEventListener('click', function(event) {
   if (event.target.className === 'game--square') {
@@ -68,13 +74,17 @@ function resetBoard() {
   if (winnerBanner.innerText.includes('Wins') || winnerBanner.innerText.includes('Tie') ) {
     setTimeout(function() {
       winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
-      for (var i = 0; i < gameBoardSquares.length; i++) {
-        gameBoardSquares[i].innerText = ''
-      }
+      clearBoardSquares()
     }, 800)
     updateScoreCounters()
     currentGame.resetGame()
     currentGame.determinePlayer()
+  }
+}
+
+function clearBoardSquares() {
+  for (var i = 0; i < gameBoardSquares.length; i++) {
+    gameBoardSquares[i].innerText = ''
   }
 }
 
@@ -100,4 +110,5 @@ function updateScoreCounters() {
 function deleteStoredGames() {
   localStorage.removeItem('saved-wins-player-one')
   localStorage.removeItem('saved-wins-player-two')
+  createNewGame()
 }
