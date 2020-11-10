@@ -8,18 +8,27 @@
   <body>
     <div class="background-image"></div>
     <header>
-      <h1>🌿 Jungle Safari Tic-Tac-Toe 🌿</h1>
-      <h2>Created by: Alia Peterson</h2>
+      <h1 class="title">🌿 Jungle Safari Tic-Tac-Toe 🌿</h1>
+      <h2 class="subtitle">Created by: Alia Peterson</h2>
     </header>
     <section class="container">
       <section class="container player">
-        <h3>Player 1</h3>
-        <h4 id="player-one-emoji">🦎</h4>
+        <label for="player--token-one" class="player--label">Player 1</label>
+        <select id="player--token-one" class="player--token" name="player-one">
+          <option value="🦎">🦎</option>
+          <option value="🐸">🐸</option>
+          <option value="🐛">🐛</option>
+          <option value="🐍">🐍</option>
+          <option value="🦋">🦋</option>
+          <option value="🦒">🦒</option>
+          <option value="🐨">🐨</option>
+          <option value="🦘">🦘</option>
+        </select>
         <h3>Number of Wins</h3>
-        <h4 id="player-one-wins" class="player--score"></h4>
+        <h4 id="player--score-one" class="player--score"></h4>
       </section>
       <section class="container game">
-        <h3 id="banner-winner"></h3>
+        <h3 class="banner"></h3>
         <div class="game--board">
           <div id="A1" class="game--square"></div>
           <div id="B1" class="game--square"></div>
@@ -31,14 +40,25 @@
           <div id="B3" class="game--square"></div>
           <div id="C3" class="game--square"></div>
         </div>
-        <button id="button--reset-board" type="button" name="button">Reset Board</button>
-        <button id="button--clear-memory" type="button" name="button">Clear Saved Games</button>
+        <div class="">
+          <button id="button--reset-board" class="button" type="button" name="button">Reset Board</button>
+          <button id="button--clear-memory" class="button" type="button" name="button">Clear Saved Games</button>
+        </div>
       </section>
       <section class="container player">
-        <h3>Player 2</h3>
-        <h4 id="player-two-emoji">🐒</h4>
+        <label for="player--token-two" class="player--label">Player 2</label>
+        <select id="player--token-two" class="player--token" name="player-two">
+          <option value="🐒">🐒</option>
+          <option value="🦁">🦁</option>
+          <option value="🐗">🐗</option>
+          <option value="🐌">🐌</option>
+          <option value="🦓">🦓</option>
+          <option value="🐘">🐘</option>
+          <option value="🦍">🦍</option>
+          <option value="🦧">🦧</option>
+        </select>
         <h3>Number of Wins</h3>
-        <h4 id="player-two-wins" class="player--score"></h4>
+        <h4 id="player--score-two" class="player--score"></h4>
       </section>
     </section>
     <script src="./src/player.js"></script>
