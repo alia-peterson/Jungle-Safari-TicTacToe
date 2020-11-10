@@ -127,7 +127,7 @@ function setPlayerToken(playerNumber) {
   var emptyBoard = [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]
   if (deepEqual(currentGame.board, emptyBoard)) {
     setTokenGameReset(playerNumber)
-  } else if (window.confirm('This action will clear the current game')) {
+  } else if (window.confirm('This action will clear the current game board. Would you like to continue?')) {
     resetBoard()
     setTokenGameReset(playerNumber)
   } else {
