@@ -127,7 +127,8 @@ function deleteStoredGames() {
 }
 
 function setPlayerEmoji(playerNumber) {
-  if (currentGame.board === [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]) {
+  var emptyBoard = [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]
+  if (deepEqual(currentGame.board, emptyBoard)) {
     setEmojiGameReset(playerNumber)
   } else if (window.confirm('This action will clear the current game')) {
     resetBoard()
@@ -142,4 +143,15 @@ function setEmojiGameReset(playerNumber) {
   playerNumber.token = event.target.value
   currentGame.determinePlayer()
   setBannerText()
+}
+
+function deepEqual(currentBoard, emptyBoard) {
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      if (currentBoard[i][j] !== emptyBoard[i][j]) {
+        return false
+      }
+      return true
+    }
+  }
 }
