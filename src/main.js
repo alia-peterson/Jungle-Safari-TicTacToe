@@ -1,6 +1,9 @@
 // query selectors
 
 var currentGame
+var player1
+var player2
+
 var gameBoard = document.querySelector('.game--board')
 var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('#banner-winner')
@@ -15,10 +18,14 @@ var resetBoardButton = document.querySelector('#button--reset-board')
 
 window.addEventListener('load', createNewGame)
 clearStorageButton.addEventListener('click', deleteStoredGames)
+resetBoardButton.addEventListener('click', resetBoard)
 
-resetBoardButton.addEventListener('click', function() {
-  clearBoardSquares()
-  currentGame.resetGame()
+playerOneEmoji.addEventListener('change', function() {
+  setPlayerEmoji(player1)
+})
+
+playerTwoEmoji.addEventListener('change', function() {
+  setPlayerEmoji(player2)
 })
 
 gameBoard.addEventListener('click', function(event) {
@@ -30,8 +37,8 @@ gameBoard.addEventListener('click', function(event) {
 // functions
 
 function createNewGame() {
-  var player1 = new Player('one', '🦎')
-  var player2 = new Player('two', '🐒')
+  player1 = new Player('one', '🦎')
+  player2 = new Player('two', '🐒')
 
   currentGame = new Game(player1, player2)
   currentGame.determinePlayer()
@@ -47,7 +54,7 @@ function assignSquareInnerText() {
     saveSquareToArray()
     setBannerText()
   }
-  resetBoard()
+  resetBoardEndGame()
 }
 
 function setBannerText() {
@@ -71,6 +78,13 @@ function saveSquareToArray() {
 }
 
 function resetBoard() {
+  clearBoardSquares()
+  currentGame.resetGame()
+  currentGame.determinePlayer()
+  setBannerText()
+}
+
+function resetBoardEndGame() {
   if (winnerBanner.innerText.includes('Wins') || winnerBanner.innerText.includes('Tie') ) {
     setTimeout(function() {
       winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
@@ -89,7 +103,6 @@ function clearBoardSquares() {
 }
 
 function updateScoreFromMemory(playerVariable, player) {
-  // console.log(currentGame.player1.retrieveWinsFromStorage());
   var retreivedWins = player.retrieveWinsFromStorage()
   if (retreivedWins) {
     playerVariable.innerText = retreivedWins.length
@@ -111,4 +124,22 @@ function deleteStoredGames() {
   localStorage.removeItem('saved-wins-player-one')
   localStorage.removeItem('saved-wins-player-two')
   createNewGame()
+}
+
+function setPlayerEmoji(playerNumber) {
+  if (currentGame.board === [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]) {
+    setEmojiGameReset(playerNumber)
+  } else if (window.confirm('This action will clear the current game')) {
+    resetBoard()
+    setEmojiGameReset(playerNumber)
+  } else {
+    playerOneEmoji.value = currentGame.player1.token
+    playerTwoEmoji.value = currentGame.player2.token
+  }
+}
+
+function setEmojiGameReset(playerNumber) {
+  playerNumber.token = event.target.value
+  currentGame.determinePlayer()
+  setBannerText()
 }
