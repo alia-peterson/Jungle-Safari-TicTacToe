@@ -1,9 +1,6 @@
 // query selectors
 
 var currentGame
-var player1
-var player2
-
 var gameBoard = document.querySelector('.game--board')
 var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('.banner')
@@ -12,7 +9,7 @@ var playerTwoToken = document.querySelector('#player--token-two')
 var playerOneWins = document.querySelector('#player--score-one')
 var playerTwoWins = document.querySelector('#player--score-two')
 var clearStorageButton = document.querySelector('#button--clear-memory')
-var resetBoardButton = document.querySelector('#button--reset-board')
+var resetBoardButton = document.querySelector('#button--clear-board')
 
 // event handlers
 
@@ -21,11 +18,11 @@ clearStorageButton.addEventListener('click', deleteStoredGames)
 resetBoardButton.addEventListener('click', resetBoard)
 
 playerOneToken.addEventListener('change', function() {
-  setPlayerToken(player1)
+  setPlayerToken(currentGame.player1)
 })
 
 playerTwoToken.addEventListener('change', function() {
-  setPlayerToken(player2)
+  setPlayerToken(currentGame.player2)
 })
 
 gameBoard.addEventListener('click', function(event) {
@@ -37,8 +34,8 @@ gameBoard.addEventListener('click', function(event) {
 // functions
 
 function createNewGame() {
-  player1 = new Player('one', '🦎')
-  player2 = new Player('two', '🐒')
+  var player1 = new Player('one', '🦎')
+  var player2 = new Player('two', '🐒')
 
   currentGame = new Game(player1, player2)
   currentGame.determinePlayer()
@@ -130,7 +127,7 @@ function setPlayerToken(playerNumber) {
   var emptyBoard = [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]
   if (deepEqual(currentGame.board, emptyBoard)) {
     setTokenGameReset(playerNumber)
-  } else if (window.confirm('This action will clear the current game')) {
+  } else if (window.confirm('This action will clear the current game board. Would you like to continue?')) {
     resetBoard()
     setTokenGameReset(playerNumber)
   } else {
