@@ -6,11 +6,11 @@ var player2
 
 var gameBoard = document.querySelector('.game--board')
 var gameBoardSquares = document.querySelectorAll('.game--square')
-var winnerBanner = document.querySelector('#banner-winner')
-var playerOneEmoji = document.querySelector('#player-one-emoji')
-var playerTwoEmoji = document.querySelector('#player-two-emoji')
-var playerOneWins = document.querySelector('#player-one-wins')
-var playerTwoWins = document.querySelector('#player-two-wins')
+var winnerBanner = document.querySelector('.banner')
+var playerOneToken = document.querySelector('#player--token-one')
+var playerTwoToken = document.querySelector('#player--token-two')
+var playerOneWins = document.querySelector('#player--score-one')
+var playerTwoWins = document.querySelector('#player--score-two')
 var clearStorageButton = document.querySelector('#button--clear-memory')
 var resetBoardButton = document.querySelector('#button--reset-board')
 
@@ -20,12 +20,12 @@ window.addEventListener('load', createNewGame)
 clearStorageButton.addEventListener('click', deleteStoredGames)
 resetBoardButton.addEventListener('click', resetBoard)
 
-playerOneEmoji.addEventListener('change', function() {
-  setPlayerEmoji(player1)
+playerOneToken.addEventListener('change', function() {
+  setPlayerToken(player1)
 })
 
-playerTwoEmoji.addEventListener('change', function() {
-  setPlayerEmoji(player2)
+playerTwoToken.addEventListener('change', function() {
+  setPlayerToken(player2)
 })
 
 gameBoard.addEventListener('click', function(event) {
@@ -126,20 +126,20 @@ function deleteStoredGames() {
   createNewGame()
 }
 
-function setPlayerEmoji(playerNumber) {
+function setPlayerToken(playerNumber) {
   var emptyBoard = [['A1', 'B1', 'C1'], ['A2', 'B2', 'C2'], ['A3', 'B3', 'C3']]
   if (deepEqual(currentGame.board, emptyBoard)) {
-    setEmojiGameReset(playerNumber)
+    setTokenGameReset(playerNumber)
   } else if (window.confirm('This action will clear the current game')) {
     resetBoard()
-    setEmojiGameReset(playerNumber)
+    setTokenGameReset(playerNumber)
   } else {
-    playerOneEmoji.value = currentGame.player1.token
-    playerTwoEmoji.value = currentGame.player2.token
+    playerOneToken.value = currentGame.player1.token
+    playerTwoToken.value = currentGame.player2.token
   }
 }
 
-function setEmojiGameReset(playerNumber) {
+function setTokenGameReset(playerNumber) {
   playerNumber.token = event.target.value
   currentGame.determinePlayer()
   setBannerText()
@@ -151,7 +151,7 @@ function deepEqual(currentBoard, emptyBoard) {
       if (currentBoard[i][j] !== emptyBoard[i][j]) {
         return false
       }
-      return true
     }
   }
+  return true
 }
