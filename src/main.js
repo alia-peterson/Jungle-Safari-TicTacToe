@@ -34,8 +34,8 @@ gameBoard.addEventListener('click', function(event) {
 // functions
 
 function createNewGame() {
-  var player1 = new Player('one', '🦎')
-  var player2 = new Player('two', '🐒')
+  var player1 = new Player('one', playerOneToken.value)
+  var player2 = new Player('two', playerTwoToken.value)
 
   currentGame = new Game(player1, player2)
   currentGame.determinePlayer()
@@ -86,7 +86,7 @@ function resetBoardEndGame() {
     setTimeout(function() {
       winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
       clearBoardSquares()
-    }, 800)
+    }, 1000)
     updateScoreCounters()
     currentGame.resetGame()
     currentGame.determinePlayer()
@@ -120,7 +120,8 @@ function updateScoreCounters() {
 function deleteStoredGames() {
   localStorage.removeItem('saved-wins-player-one')
   localStorage.removeItem('saved-wins-player-two')
-  createNewGame()
+  updateScoreFromMemory(playerOneWins, currentGame.player1)
+  updateScoreFromMemory(playerTwoWins, currentGame.player2)
 }
 
 function setPlayerToken(playerNumber) {
