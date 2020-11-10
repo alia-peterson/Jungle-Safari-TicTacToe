@@ -14,6 +14,10 @@ header {
   text-align: center;
 }
 
+.banner {
+  min-height: 28px;
+}
+
 .button {
   background-color: #81C784;
   border-style: none;

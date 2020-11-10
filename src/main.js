@@ -1,9 +1,6 @@
 // query selectors
 
 var currentGame
-var player1
-var player2
-
 var gameBoard = document.querySelector('.game--board')
 var gameBoardSquares = document.querySelectorAll('.game--square')
 var winnerBanner = document.querySelector('.banner')
@@ -21,11 +18,11 @@ clearStorageButton.addEventListener('click', deleteStoredGames)
 resetBoardButton.addEventListener('click', resetBoard)
 
 playerOneToken.addEventListener('change', function() {
-  setPlayerToken(player1)
+  setPlayerToken(currentGame.player1)
 })
 
 playerTwoToken.addEventListener('change', function() {
-  setPlayerToken(player2)
+  setPlayerToken(currentGame.player2)
 })
 
 gameBoard.addEventListener('click', function(event) {
@@ -37,8 +34,8 @@ gameBoard.addEventListener('click', function(event) {
 // functions
 
 function createNewGame() {
-  player1 = new Player('one', '🦎')
-  player2 = new Player('two', '🐒')
+  var player1 = new Player('one', '🦎')
+  var player2 = new Player('two', '🐒')
 
   currentGame = new Game(player1, player2)
   currentGame.determinePlayer()
