@@ -12,7 +12,7 @@ var playerTwoToken = document.querySelector('#player--token-two')
 var playerOneWins = document.querySelector('#player--score-one')
 var playerTwoWins = document.querySelector('#player--score-two')
 var clearStorageButton = document.querySelector('#button--clear-memory')
-var resetBoardButton = document.querySelector('#button--reset-board')
+var resetBoardButton = document.querySelector('#button--clear-board')
 
 // event handlers
 
