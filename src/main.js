@@ -86,10 +86,11 @@ function resetBoardEndGame() {
     setTimeout(function() {
       winnerBanner.innerText = `${currentGame.playerToken}'s Turn!`
       clearBoardSquares()
-    }, 1000)
+      currentGame.resetGame()
+      currentGame.determinePlayer()
+    }, 800)
     updateScoreCounters()
-    currentGame.resetGame()
-    currentGame.determinePlayer()
+    setBannerText()
   }
 }
 
