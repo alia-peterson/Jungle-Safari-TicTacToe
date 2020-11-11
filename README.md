@@ -33,6 +33,17 @@ The scores for each player will be updated when a win occurs and will be stored 
 There are two buttons below the game board: a Reset Board button and a Clear Saved Games button. The Reset Board button can be clicked in the middle of the game and will clear the current game without affecting the scores of each player. The Clear Saved Games button will clear both players scores without clearing the current game.  
 ![image](https://user-images.githubusercontent.com/70297733/98742833-58e86f00-236c-11eb-84cf-480c0fb338c9.png)  
 
+## Code Architecture
+
+### Player.js
+This file contains the player class methods that store and retrieve data from the browser's Local Storage. The data being stored in this case is the board state for each win.
+
+### Game.js
+This file has the game class methods which control the game state, including: determining player order, determining when a win occurs and returning the winning player, and reseting the board array when a win or tie occurs. 
+
+### Main.js
+This file contains the functions which control the user interface and interactions with the DOM. Anything that isn't specific to updating the player or game classes lives in this file.
+
 ## Future Iterations
 One of the example iterations was to show the win game boards for each player. The way that I programmed the Local Storage means that this should be a reasonable extension, so it is likely one that I will work on in my spare time. 
 
